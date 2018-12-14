@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>warec_description</name>
+  <version>0.0.0</version>
+  <description>warec_description package</description>
+
+  <maintainer email="yuki.st16@gmail.com">yuki</maintainer>
+  <license>MIT</license>
+
+  <author email="yuki.st16@gmail.com">yuki</author>
+</package>
