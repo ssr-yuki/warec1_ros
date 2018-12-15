@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="warec">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="leg_FL">
+        <joint name="FL_HIP_R" />
+        <joint name="FL_HIP_P" />
+        <joint name="FL_HIP_Y" />
+        <joint name="FL_KNEE_P" />
+        <joint name="FL_ANKLE_Y" />
+        <joint name="FL_ANKLE_P" />
+        <joint name="FL_ANKLE_R" />
+    </group>
+    <group name="leg_FR">
+        <joint name="FR_HIP_R" />
+        <joint name="FR_HIP_P" />
+        <joint name="FR_HIP_Y" />
+        <joint name="FR_KNEE_P" />
+        <joint name="FR_ANKLE_Y" />
+        <joint name="FR_ANKLE_P" />
+        <joint name="FR_ANKLE_R" />
+    </group>
+    <group name="leg_RL">
+        <joint name="RL_HIP_R" />
+        <joint name="RL_HIP_P" />
+        <joint name="RL_HIP_Y" />
+        <joint name="RL_KNEE_P" />
+        <joint name="RL_ANKLE_Y" />
+        <joint name="RL_ANKLE_P" />
+        <joint name="RL_ANKLE_R" />
+    </group>
+    <group name="leg_RR">
+        <joint name="RR_HIP_R" />
+        <joint name="RR_HIP_P" />
+        <joint name="RR_HIP_Y" />
+        <joint name="RR_KNEE_P" />
+        <joint name="RR_ANKLE_Y" />
+        <joint name="RR_ANKLE_P" />
+        <joint name="RR_ANKLE_R" />
+    </group>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="FL" parent_link="FL_ANKLE_R" group="leg_FL" />
+    <end_effector name="FR" parent_link="FR_ANKLE_R" group="leg_FR" />
+    <end_effector name="RL" parent_link="RL_ANKLE_R" group="leg_RL" />
+    <end_effector name="RR" parent_link="RR_ANKLE_R" group="leg_RR" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="BASE" link2="FL_HIP_P" reason="Never" />
+    <disable_collisions link1="BASE" link2="FL_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="BASE" link2="FL_HIP_Y" reason="Never" />
+    <disable_collisions link1="BASE" link2="FR_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="BASE" link2="FR_HIP_Y" reason="Never" />
+    <disable_collisions link1="BASE" link2="RL_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="BASE" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="BASE" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="BASE" link2="RR_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="BASE" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_P" link2="FL_ANKLE_R" reason="Adjacent" />
+    <disable_collisions link1="FL_ANKLE_P" link2="FL_ANKLE_Y" reason="Adjacent" />
+    <disable_collisions link1="FL_ANKLE_P" link2="FL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_P" link2="FL_HOOK" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_P" link2="FL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_R" link2="FL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_R" link2="FL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_R" link2="FL_HOOK" reason="Adjacent" />
+    <disable_collisions link1="FL_ANKLE_R" link2="FL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="FL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="FL_HOOK" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="FL_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_ANKLE_Y" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="FL_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="FL_HIP_P" link2="FL_HIP_Y" reason="Adjacent" />
+    <disable_collisions link1="FL_HIP_P" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="RR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_P" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="FL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="FL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_R" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="FL_HOOK" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="FL_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="FL_HIP_Y" link2="RR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_HIP_Y" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_HOOK" link2="FL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FL_KNEE_P" link2="RR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FL_KNEE_P" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FL_KNEE_P" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FL_KNEE_P" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FL_KNEE_P" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_P" link2="FR_ANKLE_R" reason="Adjacent" />
+    <disable_collisions link1="FR_ANKLE_P" link2="FR_ANKLE_Y" reason="Adjacent" />
+    <disable_collisions link1="FR_ANKLE_P" link2="FR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_P" link2="FR_HOOK" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_P" link2="FR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_P" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_P" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_R" link2="FR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_R" link2="FR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_R" link2="FR_HOOK" reason="Adjacent" />
+    <disable_collisions link1="FR_ANKLE_R" link2="FR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_R" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="FR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="FR_HOOK" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="FR_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_ANKLE_Y" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="FR_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="FR_HIP_P" link2="FR_HIP_Y" reason="Adjacent" />
+    <disable_collisions link1="FR_HIP_P" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_P" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="FR_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="FR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_ANKLE_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RR_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_R" link2="RR_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="FR_HOOK" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="FR_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="FR_HIP_Y" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_HIP_Y" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_HOOK" link2="FR_KNEE_P" reason="Never" />
+    <disable_collisions link1="FR_KNEE_P" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="FR_KNEE_P" link2="RL_HIP_P" reason="Never" />
+    <disable_collisions link1="FR_KNEE_P" link2="RL_HIP_R" reason="Never" />
+    <disable_collisions link1="FR_KNEE_P" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="FR_KNEE_P" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_P" link2="RL_ANKLE_R" reason="Adjacent" />
+    <disable_collisions link1="RL_ANKLE_P" link2="RL_ANKLE_Y" reason="Adjacent" />
+    <disable_collisions link1="RL_ANKLE_P" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_P" link2="RL_HOOK" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_P" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_R" link2="RL_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_R" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_R" link2="RL_HOOK" reason="Adjacent" />
+    <disable_collisions link1="RL_ANKLE_R" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_Y" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_Y" link2="RL_HOOK" reason="Never" />
+    <disable_collisions link1="RL_ANKLE_Y" link2="RL_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="RL_HIP_P" link2="RL_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="RL_HIP_P" link2="RL_HIP_Y" reason="Adjacent" />
+    <disable_collisions link1="RL_HIP_R" link2="RL_HIP_Y" reason="Never" />
+    <disable_collisions link1="RL_HIP_R" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="RL_HIP_Y" link2="RL_HOOK" reason="Never" />
+    <disable_collisions link1="RL_HIP_Y" link2="RL_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="RL_HOOK" link2="RL_KNEE_P" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_P" link2="RR_ANKLE_R" reason="Adjacent" />
+    <disable_collisions link1="RR_ANKLE_P" link2="RR_ANKLE_Y" reason="Adjacent" />
+    <disable_collisions link1="RR_ANKLE_P" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_P" link2="RR_HOOK" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_P" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_R" link2="RR_ANKLE_Y" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_R" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_R" link2="RR_HOOK" reason="Adjacent" />
+    <disable_collisions link1="RR_ANKLE_R" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_Y" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_Y" link2="RR_HOOK" reason="Never" />
+    <disable_collisions link1="RR_ANKLE_Y" link2="RR_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="RR_HIP_P" link2="RR_HIP_R" reason="Adjacent" />
+    <disable_collisions link1="RR_HIP_P" link2="RR_HIP_Y" reason="Adjacent" />
+    <disable_collisions link1="RR_HIP_R" link2="RR_HIP_Y" reason="Never" />
+    <disable_collisions link1="RR_HIP_R" link2="RR_KNEE_P" reason="Never" />
+    <disable_collisions link1="RR_HIP_Y" link2="RR_HOOK" reason="Never" />
+    <disable_collisions link1="RR_HIP_Y" link2="RR_KNEE_P" reason="Adjacent" />
+    <disable_collisions link1="RR_HOOK" link2="RR_KNEE_P" reason="Never" />
+</robot>

@@ -1,0 +1,37 @@
+controller_list:
+  - name: fake_leg_FL_controller
+    joints:
+      - FL_HIP_R
+      - FL_HIP_P
+      - FL_HIP_Y
+      - FL_KNEE_P
+      - FL_ANKLE_Y
+      - FL_ANKLE_P
+      - FL_ANKLE_R
+  - name: fake_leg_FR_controller
+    joints:
+      - FR_HIP_R
+      - FR_HIP_P
+      - FR_HIP_Y
+      - FR_KNEE_P
+      - FR_ANKLE_Y
+      - FR_ANKLE_P
+      - FR_ANKLE_R
+  - name: fake_leg_RL_controller
+    joints:
+      - RL_HIP_R
+      - RL_HIP_P
+      - RL_HIP_Y
+      - RL_KNEE_P
+      - RL_ANKLE_Y
+      - RL_ANKLE_P
+      - RL_ANKLE_R
+  - name: fake_leg_RR_controller
+    joints:
+      - RR_HIP_R
+      - RR_HIP_P
+      - RR_HIP_Y
+      - RR_KNEE_P
+      - RR_ANKLE_Y
+      - RR_ANKLE_P
+      - RR_ANKLE_R

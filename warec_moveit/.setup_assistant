@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: warec_description
+    relative_path: urdf/WAREC1.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/warec.srdf
+  CONFIG:
+    author_name: yuki
+    author_email: yuki.st16@gmail.com
+    generated_timestamp: 1544811256

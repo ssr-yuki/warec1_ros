@@ -1,0 +1,48 @@
+warec:
+# MoveIt-specific simulation settings
+  moveit_sim_hw_interface:
+    joint_model_group: controllers_initial_group_
+    joint_model_group_pose: controllers_initial_pose_
+# Settings for ros_control control loop
+  generic_hw_control_loop:
+    loop_hz: 300
+    cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+  hardware_interface:
+    joints:
+      - FL_HIP_R
+      - FL_HIP_P
+      - FL_HIP_Y
+      - FL_KNEE_P
+      - FL_ANKLE_Y
+      - FL_ANKLE_P
+      - FL_ANKLE_R
+      - FR_HIP_R
+      - FR_HIP_P
+      - FR_HIP_Y
+      - FR_KNEE_P
+      - FR_ANKLE_Y
+      - FR_ANKLE_P
+      - FR_ANKLE_R
+      - RL_HIP_R
+      - RL_HIP_P
+      - RL_HIP_Y
+      - RL_KNEE_P
+      - RL_ANKLE_Y
+      - RL_ANKLE_P
+      - RL_ANKLE_R
+      - RR_HIP_R
+      - RR_HIP_P
+      - RR_HIP_Y
+      - RR_KNEE_P
+      - RR_ANKLE_Y
+      - RR_ANKLE_P
+      - RR_ANKLE_R
+    sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  controller_list:
+    []
